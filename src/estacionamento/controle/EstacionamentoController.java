@@ -30,8 +30,6 @@ public class EstacionamentoController {
 		Movimentacao movimentacao = new Movimentacao(veiculo, LocalDateTime.now());
 		//registrar na base da dados a informação.
 		DAOEstacionamento dao =  new DAOEstacionamento();
-		dao.criar(movimentacao);
-		//atualizar o numero de vagas ocupadas
 		Vaga.entrou();
 		
     }
