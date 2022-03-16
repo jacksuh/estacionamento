@@ -3,6 +3,7 @@ package estacionamento.persistencia;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -93,5 +94,27 @@ public class DAOEstacionamento {
 			}
 
 		}
+	}
+
+	public int getOcupadas() {
+		int ocupadas = 0;
+		Connection conexao = null;
+		String cmd = EstacionamentoUtil.get("consultaOcupadas");
+		try {
+			conexao = getConnection();
+			PreparedStatement ps = conexao.prepareStatement(cmd);
+			
+			ResultSet resultado = ps.executeQuery();
+			if(resultado.next()){
+				ocupadas = resultado.getInt("ocupadas");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeConnection(conexao);
+		}
+		
+		return ocupadas;
 	}
 }

@@ -44,4 +44,9 @@ public class EstacionamentoController {
 
         return null;
     }
+
+	public int inicializarOcupadas() {
+		DAOEstacionamento dao = new DAOEstacionamento();
+		return dao.getOcupadas();
+	}
 }
