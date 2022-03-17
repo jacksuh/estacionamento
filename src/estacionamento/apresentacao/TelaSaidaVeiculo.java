@@ -77,7 +77,7 @@ public class TelaSaidaVeiculo extends JFrame implements ActionListener{
 			//vai para a proxima tela de pagamento
 			EstacionamentoController controle = new EstacionamentoController();
 			Movimentacao movimentacao = controle.processarSaida(txtPlaca.getText());
-			TelaResumoPagamento telaresumo = new TelaResumoPagamento(movimentacao);
+			TelaResumoPagamento telaresumo = new TelaResumoPagamento(movimentacao,parent);
 			telaresumo.setVisible(true);
 		}else{
 			parent.setVisible(true);
